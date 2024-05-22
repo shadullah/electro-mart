@@ -25,13 +25,17 @@ const Footer = () => {
               <h1 className="text-2xl font-semibold my-4 text-white">Links</h1>
               <ul>
                 <li className="text-xl hover:text-orange-600">
-                  <Link>Home</Link>
+                  <Link to={"/"}>Home</Link>
                 </li>
                 <li className="text-xl hover:text-orange-600">
                   <Link>Shop</Link>
                 </li>
                 <li className="text-xl hover:text-orange-600">
-                  <Link>Contact Us</Link>
+                  <Link
+                    to={"https://d-themes.com/wordpress/udesign/electronics/"}
+                  >
+                    Contact Us
+                  </Link>
                 </li>
               </ul>
             </div>

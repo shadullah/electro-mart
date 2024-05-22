@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const ItemsSingle = ({ item }) => {
   // console.log(item);
@@ -15,7 +16,9 @@ const ItemsSingle = ({ item }) => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="relative card text-center">
-          <img src={image} alt="" />
+          <Link to={`/list/${item.id}`}>
+            <img src={image} alt="" />{" "}
+          </Link>
           <div
             className={`absolute top-0 right-0 mt-3 mr-3 space-y-2 text-3xl duration-700 ease-out ${
               isHovered ? "opacity-100" : "opacity-0"
@@ -32,7 +35,9 @@ const ItemsSingle = ({ item }) => {
             </div>
           </div>
           <div className="my-3">
-            <h1 className="text-sm">{title}</h1>
+            <Link to={`${item.id}`}>
+              <h1 className="text-sm">{title}</h1>{" "}
+            </Link>
             <p className="font-bold mt-2 text-2xl">${price}</p>
           </div>
         </div>

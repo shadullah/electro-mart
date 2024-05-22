@@ -17,10 +17,7 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [usersSingle] = useUsers();
-  console.log(usersSingle);
-
-  const token = localStorage.getItem("token");
-  console.log(token);
+  // console.log(usersSingle);
 
   const navigate = useNavigate();
 
@@ -86,6 +83,9 @@ const Navbar = () => {
               </li>
               <li className="hover:text-orange-600 mr-3">
                 <Link to="/shop">Shop</Link>
+              </li>
+              <li className="hover:text-orange-600 mr-3">
+                <Link to="/sell">Selling</Link>
               </li>
               <li className="hover:text-orange-600 mr-3">
                 <Link to="/contact">Contact Us</Link>

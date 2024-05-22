@@ -18,21 +18,23 @@ const Features = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <span>
+          <span className="text-5xl mr-5">
             <TfiHeadphoneAlt />
           </span>
           <div>
-            <h5 className="uppercase">24/7 support</h5>
-            <p>Instant access to perfect support</p>
+            <h5 className="uppercase font-bold text-xl">24/7 support</h5>
+            <p className="text-md text-gray-600">
+              Instant access to perfect support
+            </p>
           </div>
         </div>
         <div className="flex items-center">
-          <span>
+          <span className="text-5xl mr-5">
             <RiExchangeDollarLine />
           </span>
           <div>
-            <h5 className="uppercase">100% return</h5>
-            <p>We ensure secure payment!</p>
+            <h5 className="uppercase font-bold text-xl">100% return</h5>
+            <p className="text-md text-gray-600">We ensure secure payment!</p>
           </div>
         </div>
       </div>

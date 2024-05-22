@@ -1,4 +1,5 @@
 import Carousel from "../Carousel/Carousel";
+import Companies from "../Companies/Companies";
 import Features from "../Features/Features";
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
       <Carousel />
       <Features />
       home
+      <Companies />
     </div>
   );
 };

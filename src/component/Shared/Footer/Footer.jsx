@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <>
+    <div>
       <footer className="bg-gray-900">
         <div className="max-w-[1200px] mx-auto">
           <div className="block md:flex justify-between py-12 text-gray-400">
@@ -13,12 +13,12 @@ const Footer = () => {
               <h1 className="text-4xl font-semibold my-4 text-white">
                 <span className="text-orange-600">Electro</span> Mart
               </h1>
-              <p>
+              <div>
                 <div className="flex items-center">
                   <CiMail className="mr-2" />
                   <p>help@electro-mail.com</p>
                 </div>
-              </p>
+              </div>
               <address>Address: Mohakhali DOHS, Mohakhali , Dhaka-1218</address>
             </div>
             <div>
@@ -58,7 +58,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 

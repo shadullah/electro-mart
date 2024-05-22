@@ -1,3 +1,4 @@
+import Products from "../../Products/Products";
 import Carousel from "../Carousel/Carousel";
 import Companies from "../Companies/Companies";
 import Features from "../Features/Features";
@@ -9,6 +10,7 @@ const Home = () => {
       <Carousel />
       <Features />
       <GellaryList />
+      <Products />
       <Companies />
     </div>
   );

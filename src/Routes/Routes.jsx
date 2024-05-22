@@ -5,6 +5,7 @@ import SignUp from "../component/Pages/Authentication/SignUp/SignUp";
 import Login from "../component/Pages/Authentication/Login/Login";
 import ItemDetails from "../component/Pages/Products/ItemDetails";
 import Selling from "../component/Pages/Selling/Selling";
+import Products from "../component/Pages/Products/Products";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/shop",
+        element: <Products />,
       },
       {
         path: "/sell",

@@ -29,8 +29,8 @@ npm run dev
 ## Features
 
 1. **Authentication:** A user authentication was implemented
-2. ** Product Show: ** Products are shown in grid
-3. ** UI : ** UI was built very explicitly
+2. **Product Show:** Products are shown in grid
+3. **UI:** UI was built very explicitly
 
 ## Technologies Used
 
@@ -41,3 +41,8 @@ npm run dev
 - Django-rest-framework
 - React-icons
 - React-hook-forms
+
+## Go to it's Backend Code/ Repository
+```bash
+https://github.com/shadullah/electro-mart-backend
+```

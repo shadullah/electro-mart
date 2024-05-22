@@ -1,0 +1,12 @@
+.slider{
+    background-color: white !important;
+    height: 600px;
+}
+
+.slider .awssld__content {
+    background-color: rgb(238, 230, 230) !important;
+  }
+
+  .slider .slider_content{
+    width: 1000px;
+  }

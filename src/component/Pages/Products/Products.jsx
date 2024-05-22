@@ -8,9 +8,11 @@ const Products = () => {
       <h1 className="text-4xl">
         Our <span className="font-bold">Products</span>
       </h1>
-      {items.map((item) => (
-        <ItemsSingle key={item.id} item={item} />
-      ))}
+      <div className="grid grid-cols-4  gap-4 my-6">
+        {items.map((item) => (
+          <ItemsSingle key={item?.id} item={item} />
+        ))}
+      </div>
     </div>
   );
 };

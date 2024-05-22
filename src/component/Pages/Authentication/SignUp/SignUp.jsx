@@ -1,36 +1,78 @@
-import { Link } from "react-router-dom";
-import signImg from "../../../../assets/Authentixate/signup.png";
+import { Link, useNavigate } from "react-router-dom";
+// import signImg from "../../../../assets/Authentixate/signup.png";
 import { useForm } from "react-hook-form";
+import { useRef } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const {
     register,
-    // handleSubmit,
-    // reset,
-    // watch,
+    handleSubmit,
+    reset,
+    watch,
     formState: { errors },
   } = useForm();
+
+  const password = useRef({});
+  password.current = watch("password", "");
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/account/register/",
+        {
+          username: data.username,
+          first_name: data.first_name,
+          last_name: data.last_name,
+          email: data.email,
+          password: data.password,
+          confirm_password: data.confirm_password,
+        }
+      );
+      // toast.loading("Wait for server response");
+
+      if (response.status === 201) {
+        console.log("Registration successful", response.data);
+        history.push("/");
+      } else {
+        reset();
+        navigate("/login");
+        toast.success(response.data, { duration: 4000 });
+        console.error("Registration failed", response.data);
+      }
+    } catch (error) {
+      console.error("An error occurred during registration", error);
+    }
+  };
+
   return (
     <div>
       <div className="block md:flex justify-center items-center bg-orange-300">
-        <div className="w-full md:w-1/2">
+        {/* <div className="w-full md:w-1/2">
           <img
             src={signImg}
             className="mx-auto animate-slowMove mix-blend-multiply"
             alt="img"
           />
-        </div>
+        </div> */}
         <div className="w-full md:w-1/2 ">
-          <h1 className="text-3xl font-bold text-gray-600 mt-6 ml-6 md:ml-16">
+          <h1 className="text-3xl text-center font-bold text-gray-600 mt-12">
             SIGN UP
           </h1>
-          <p className="ml-6 md:ml-16 text-gray-600">
+          <p className="text-center text-gray-600">
             Sign up To Enter a New World
           </p>
 
           {/* form start here */}
 
-          <form onSubmit="" className="px-6 md:px-16 py-8 md:py-8">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="px-6 md:px-16 py-8 md:py-8"
+          >
             <div>
               <div className="w-full px-3 mb-6">
                 <label className="block uppercase tracking-wide text-gray-600 text-xs font-bold mb-2">
@@ -135,11 +177,11 @@ const SignUp = () => {
                   placeholder=""
                   name="confirm_password"
                   type="password"
-                  //   {...register("confirm_password", {
-                  //     required: true,
-                  //     validate: (val) =>
-                  //       val === password.current || "Passwords do not match",
-                  //   })}
+                  {...register("confirm_password", {
+                    required: true,
+                    validate: (val) =>
+                      val === password.current || "Passwords do not match",
+                  })}
                 />
                 {errors.confirm_password && (
                   <span className="text-red-700">

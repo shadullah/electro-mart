@@ -1,8 +1,48 @@
-# React + Vite
+# Electro Mart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Electro Mart is an Buy, sell website which was built using React, JavaScript, Tailwind Css, Django-rest-framework, Django, React-icons and many more to go. I will try continously update this project.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Watch Live demo here:
+
+```bash
+https://electro-mart-eta.vercel.app/
+```
+
+## Installation
+
+To install the necessary dependencies, run:
+
+```bash
+npm install
+```
+
+## Running the Project
+
+To run the project, use the following command:
+
+```bash
+npm run dev
+```
+
+## Features
+
+1. **Authentication:** A user authentication was implemented
+2. **Product Show:** Products are shown in grid
+3. **UI:** UI was built very explicitly
+
+## Technologies Used
+
+- React
+- JavaScript
+- Tailwind Css
+- Django
+- Django-rest-framework
+- React-icons
+- React-hook-forms
+
+## Go to it's Backend Code/ Repository
+```bash
+https://github.com/shadullah/electro-mart-backend
+```

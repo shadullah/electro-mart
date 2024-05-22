@@ -1,0 +1,32 @@
+.bg{
+    background-image: url(../../../../assets/GellaryImg/banner1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* height: 100%; */
+    /* width: 100%; */
+}
+.bg2{
+    background-image: url(../../../../assets/GellaryImg/banner2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* height: 100%; */
+    /* width: 100%; */
+}
+.bg3{
+    background-image: url(../../../../assets/GellaryImg/banner3.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* height: 100%; */
+    /* width: 100%; */
+}
+.bg4{
+    background-image: url(../../../../assets/GellaryImg/banner4.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* height: 100%; */
+    /* width: 100%; */
+}

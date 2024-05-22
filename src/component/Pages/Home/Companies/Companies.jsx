@@ -1,8 +1,8 @@
 const Companies = () => {
   return (
     <>
-      <hr />
       <div className="max-w-[1200px] mx-auto">
+        <hr />
         <div className="flex justify-between items-center my-12">
           <img
             className="w-36"

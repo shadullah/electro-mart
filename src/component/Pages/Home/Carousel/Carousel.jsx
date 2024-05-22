@@ -28,7 +28,7 @@ const Carousel = () => {
             </button>
           </div>
           <div>
-            <img className="w-[450px]" src={hdphn} alt="" />
+            <img className="w-[450px] animate-slowMove" src={hdphn} alt="" />
           </div>
         </div>
 
@@ -36,7 +36,7 @@ const Carousel = () => {
 
         <div className="slider_content flex justify-between items-center">
           <div>
-            <img className="w-[450px]" src={camera} alt="" />
+            <img className="w-[450px] animate-slowMove" src={camera} alt="" />
           </div>
           <div>
             <p className="uppercase text-5xl font-light text-gray-800">

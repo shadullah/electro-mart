@@ -35,13 +35,16 @@ const SignUp = () => {
       );
       // toast.loading("Wait for server response");
 
-      if (response.status === 201) {
+      if (response.status === 200) {
         console.log("Registration successful", response.data);
-        history.push("/");
+        navigate("/");
+        toast.success("Registration successfull, Please Login", response.data, {
+          duration: 3000,
+        });
+        navigate("/login");
       } else {
         reset();
-        navigate("/login");
-        toast.success(response.data, { duration: 4000 });
+        toast.error(response.data, { duration: 4000 });
         console.error("Registration failed", response.data);
       }
     } catch (error) {

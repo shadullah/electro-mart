@@ -1,0 +1,8 @@
+.signBg{
+    background-image: url(../../../../assets//Authentixate/sign.png);
+    background-repeat: no-repeat;
+    background-size:auto;
+    background-position: center;
+    height: 700px;
+    width: 300px;
+}

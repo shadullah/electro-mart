@@ -118,7 +118,7 @@ const ItemDetails = () => {
                 </div>
               </div>
             </div>
-            {item.user.id == userId ? (
+            {item?.user?.id == userId ? (
               <>
                 <div className="mb-12 flex justify-around">
                   <Link to={`/shop/${id}/update`}>

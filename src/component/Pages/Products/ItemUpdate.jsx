@@ -1,33 +1,74 @@
 import { useNavigate, useParams } from "react-router-dom";
 import edit from "../../../assets/edit.jpg";
 import { useEffect, useState } from "react";
-import useItems from "../../../Hooks/useItems";
+import axios from "axios";
+import load from "../../../assets/loading.gif";
+import toast from "react-hot-toast";
 
 const ItemUpdate = () => {
-  // const { id } = useParams();
-  const [items] = useItems();
-  // const navigate = useNavigate()
+  const { id } = useParams();
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [des, setDes] = useState("");
   const [price, setPrice] = useState("");
   const [condition, setCondition] = useState("");
   const [url, setUrl] = useState("");
 
-  // setTitle(items?.title);
-  // setDes(items?.description);
-  // setPrice(items?.price);
-  // setCondition(items?.condition);
-  // setUrl(items?.url);
-
   useEffect(() => {
-    if (items) {
-      setTitle(items?.title);
-      setDes(items?.description);
-      setPrice(items?.price);
-      setCondition(items?.condition);
-      setUrl(items?.url);
+    const getItem = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8000/list/${id}/`, {
+          // headers: {
+          //   Authorization: `token ${localStorage.getItem("token")}`,
+          // },
+        });
+        setTitle(res.data?.title);
+        setDes(res.data?.description);
+        setPrice(res.data?.price);
+        setCondition(res.data?.condition);
+        setUrl(res.data?.image);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getItem();
+  }, [id]);
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    const title = e.target.title.value;
+    const description = e.target.des.value;
+    const price = e.target.price.value;
+    const condition = e.target.condition.value;
+    const image = e.target.url.value;
+
+    console.log(url, description, title);
+
+    try {
+      await axios.put(
+        `http://localhost:8000/list/${id}/`,
+        {
+          title: title,
+          description: description,
+          price: price,
+          condition: condition,
+          image: image,
+        },
+        {
+          headers: {
+            Authorization: `token ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      navigate(`/shop/${id}`);
+      toast.success("Updated successfully");
+    } catch (err) {
+      toast.error(err);
     }
-  }, [items]);
+  };
 
   return (
     <div>
@@ -42,85 +83,98 @@ const ItemUpdate = () => {
         }}
       >
         <div
-          className="absolute inset-0 bg-orange-400 opacity-50"
-          style={{ backgroundColor: "rgba(184, 169, 129)" }}
+          className="absolute inset-0 bg-black opacity-50"
+          style={{ backgroundColor: "rgba(0, 0, 5)" }}
         ></div>
-        <div className="relative z-10">
-          <h1 className="py-12 text-4xl font-bold text-center text-gray-900">
+        <div className="relative z-10 text-white">
+          <h1 className="py-12 text-4xl font-bold text-center">
             Update Product Details
             <div className="w-36 h-1 bg-orange-500 mx-auto"></div>
           </h1>
 
-          <div className="mx-auto">
-            <form onSubmit="" className="mx-4 w-1/2 md:mx-auto py-6 md:py-16">
-              <div>
-                <div className="w-full px-3 mb-6">
-                  <input
-                    onChange={(e) => setUrl(e.target.value)}
-                    className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
-                    name="url"
-                    placeholder="Image url here"
-                    type="url"
-                    value={url}
-                    required
-                  />
-                </div>
-                <div className="w-full px-3 mb-6">
-                  <input
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
-                    name="title"
-                    placeholder="Title"
-                    type="text"
-                    value={title}
-                    required
-                  />
-                </div>
-
-                <div className="w-full px-3 mb-6">
-                  <textarea
-                    onChange={(e) => setDes(e.target.value)}
-                    className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
-                    name="description"
-                    type="text"
-                    value={des}
-                    placeholder="Write Product description here..."
-                    required
-                  />
-                </div>
-                <div className="w-full px-3 mb-6">
-                  <input
-                    onChange={(e) => setCondition(e.target.value)}
-                    className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
-                    name="condition"
-                    type="text"
-                    value={condition}
-                    placeholder="Write Product condition here..."
-                    required
-                  />
-                </div>
-                <div className="w-full px-3 mb-6">
-                  <input
-                    onChange={(e) => setPrice(e.target.value)}
-                    className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
-                    name="price"
-                    type="number"
-                    value={price}
-                    placeholder="$00"
-                    required
-                  />
-                </div>
+          {loading ? (
+            <>
+              <div className="my-12">
+                <img className="mx-auto w-36 h-36" src={load} alt="" />
               </div>
+            </>
+          ) : (
+            <>
+              <div className="mx-auto">
+                <form
+                  onSubmit={handleUpdate}
+                  className="mx-4 w-1/2 md:mx-auto py-6 md:py-16"
+                >
+                  <div>
+                    <div className="w-full px-3 mb-6">
+                      <input
+                        onChange={(e) => setUrl(e.target.value)}
+                        className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
+                        name="url"
+                        placeholder="Image url here"
+                        type="url"
+                        value={url}
+                        required
+                      />
+                    </div>
+                    <div className="w-full px-3 mb-6">
+                      <input
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
+                        name="title"
+                        placeholder="Title"
+                        type="text"
+                        value={title}
+                        required
+                      />
+                    </div>
 
-              <div className="text-center mt-6">
-                <input
-                  className="bg-gray-400 w-full py-3 cursor-pointer rounded-lg font-bold"
-                  type="submit"
-                  value="Update Product"
-                />
+                    <div className="w-full px-3 mb-6">
+                      <textarea
+                        onChange={(e) => setDes(e.target.value)}
+                        className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
+                        name="des"
+                        type="text"
+                        value={des}
+                        placeholder="Write Product description here..."
+                        required
+                      />
+                    </div>
+                    <div className="w-full px-3 mb-6">
+                      <input
+                        onChange={(e) => setCondition(e.target.value)}
+                        className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
+                        name="condition"
+                        type="text"
+                        value={condition}
+                        placeholder="Write Product condition here..."
+                        required
+                      />
+                    </div>
+                    <div className="w-full px-3 mb-6">
+                      <input
+                        onChange={(e) => setPrice(e.target.value)}
+                        className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
+                        name="price"
+                        type="number"
+                        value={price}
+                        placeholder="$00"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="text-center mt-6">
+                    <input
+                      className="bg-orange-400 w-full py-3 cursor-pointer rounded-lg font-bold"
+                      type="submit"
+                      value="Update Product"
+                    />
+                  </div>
+                </form>
               </div>
-            </form>
-          </div>
+            </>
+          )}
         </div>
       </div>
     </div>

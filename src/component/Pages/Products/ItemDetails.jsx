@@ -40,9 +40,9 @@ const ItemDetails = () => {
   const handleDelete = async () => {
     try {
       await axios.delete(`http://localhost:8000/list/${item?.id}`, {
-        // headers: {
-        //   Authorization: `token ${localStorage.getItem("token")}`,
-        // },
+        headers: {
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
       });
       navigate("/shop");
       toast.success("Delete Success");

@@ -121,7 +121,7 @@ const ItemDetails = () => {
             {item.user.id == userId ? (
               <>
                 <div className="mb-12 flex justify-around">
-                  <Link to={`/update`}>
+                  <Link to={`/shop/${id}/update`}>
                     <button className="flex justify-center items-center px-4 py-3 bg-green-600 font-bold text-white">
                       <LiaEdit className="text-3xl mr-3" />
                       Update Product

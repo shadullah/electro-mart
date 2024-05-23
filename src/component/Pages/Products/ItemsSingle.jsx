@@ -21,7 +21,7 @@ const ItemsSingle = ({ item }) => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="relative card text-center">
-          <Link to={`/list/${item.id}`}>
+          <Link to={`/shop/${item.id}`}>
             <img src={image} alt="" />{" "}
           </Link>
           <div

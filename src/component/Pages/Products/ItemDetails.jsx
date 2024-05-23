@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 const ItemDetails = () => {
   const { id } = useParams();
   const [item, setItem] = useState([]);
-  console.log(item);
+  //   console.log(item.user);
 
   useEffect(() => {
     const getSingleItem = async () => {
@@ -50,6 +50,9 @@ const ItemDetails = () => {
               </span>
             </div>
             <p className="text-gray-600  my-6">{item?.description}</p>
+            <p className="text-gray-600  my-3">
+              Seller: {item?.user?.username}
+            </p>
             <h4>Category: </h4>
             <h4>
               Condition:{" "}
@@ -58,7 +61,7 @@ const ItemDetails = () => {
               </span>
             </h4>
             <h3 className="text-3xl font-bold my-6 text-orange-500">
-              ${item.price}
+              ${item?.price}
             </h3>
             <div className="flex justify-around">
               <button className="hover:text-orange-400 text-gray-600 flex items-center font-bold">

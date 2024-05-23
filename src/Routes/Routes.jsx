@@ -6,6 +6,7 @@ import Login from "../component/Pages/Authentication/Login/Login";
 import ItemDetails from "../component/Pages/Products/ItemDetails";
 import Selling from "../component/Pages/Selling/Selling";
 import Products from "../component/Pages/Products/Products";
+import Profile from "../component/Pages/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: "/sell",
         element: <Selling />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/signup",

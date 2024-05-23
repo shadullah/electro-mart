@@ -7,6 +7,7 @@ import ItemDetails from "../component/Pages/Products/ItemDetails";
 import Selling from "../component/Pages/Selling/Selling";
 import Products from "../component/Pages/Products/Products";
 import Profile from "../component/Pages/Profile/Profile";
+import ItemUpdate from "../component/Pages/Products/ItemUpdate";
 
 export const router = createBrowserRouter([
   {
@@ -38,8 +39,12 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/list/:id",
+        path: "/shop/:id",
         element: <ItemDetails />,
+      },
+      {
+        path: "/list/:id/update",
+        element: <ItemUpdate />,
       },
     ],
   },

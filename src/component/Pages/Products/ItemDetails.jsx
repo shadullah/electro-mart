@@ -3,15 +3,20 @@ import { useEffect, useState } from "react";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { FaRegStarHalfStroke } from "react-icons/fa6";
 import { RiShoppingCartLine } from "react-icons/ri";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import load from "../../../assets/loading.gif";
 import { LiaEdit } from "react-icons/lia";
+import { AiOutlineDelete } from "react-icons/ai";
+import toast from "react-hot-toast";
 
 const ItemDetails = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [item, setItem] = useState([]);
-  //   console.log(item.user);
+  //   console.log(item.user.id);
+  const userId = localStorage.getItem("userId");
+  //   console.log(userId);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getSingleItem = async () => {
@@ -31,6 +36,20 @@ const ItemDetails = () => {
     };
     getSingleItem();
   }, [id]);
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:8000/list/${item?.id}`, {
+        headers: {
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      });
+      navigate("/shop");
+      toast.success("Delete Success");
+    } catch (err) {
+      toast.error(err);
+    }
+  };
 
   return (
     <div>
@@ -99,12 +118,27 @@ const ItemDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="my-12">
-              <button className="flex justify-center items-center px-4 py-3 bg-orange-600 font-bold text-white">
-                <LiaEdit className="text-3xl mr-3" />
-                Update Product
-              </button>
-            </div>
+            {item.user.id == userId ? (
+              <>
+                <div className="mb-12 flex justify-around">
+                  <Link to={`/update`}>
+                    <button className="flex justify-center items-center px-4 py-3 bg-green-600 font-bold text-white">
+                      <LiaEdit className="text-3xl mr-3" />
+                      Update Product
+                    </button>
+                  </Link>
+                  <button
+                    onClick={handleDelete}
+                    className="flex justify-center items-center px-4 py-3 bg-red-600 font-bold text-white"
+                  >
+                    <AiOutlineDelete className="text-3xl mr-3" />
+                    Delete Product
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>ami</>
+            )}
           </div>
         </>
       )}

@@ -137,7 +137,7 @@ const ItemDetails = () => {
                 </div>
               </>
             ) : (
-              <>ami</>
+              <></>
             )}
           </div>
         </>

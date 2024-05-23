@@ -9,7 +9,12 @@ const useUsers = () => {
     const getUsers = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/account/user_list/${userId}/`
+          `http://localhost:8000/account/user_list/${userId}/`,
+          {
+            headers: {
+              Authorization: `token ${localStorage.getItem("token")}`,
+            },
+          }
         );
 
         setUsersSignle(res.data);

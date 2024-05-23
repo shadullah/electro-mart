@@ -5,8 +5,13 @@ import { Link } from "react-router-dom";
 
 const ItemsSingle = ({ item }) => {
   // console.log(item);
-  const { title, price, image } = item;
   const [isHovered, setIsHovered] = useState(false);
+
+  if (!item) {
+    return <h1>Loading....</h1>;
+  }
+
+  const { title, price, image } = item;
 
   return (
     <div>

@@ -8,6 +8,7 @@ import Selling from "../component/Pages/Selling/Selling";
 import Products from "../component/Pages/Products/Products";
 import Profile from "../component/Pages/Profile/Profile";
 import ItemUpdate from "../component/Pages/Products/ItemUpdate";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -40,7 +41,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/shop/:id",
-        element: <ItemDetails />,
+        element: (
+          <PrivateRoute>
+            <ItemDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/shop/:id/update",

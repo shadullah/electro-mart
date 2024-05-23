@@ -9,14 +9,14 @@ import { FaXTwitter } from "react-icons/fa6";
 import { GoPerson } from "react-icons/go";
 import { IoCartOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
-import useUsers from "../../../Hooks/useUsers";
+// import useUsers from "../../../Hooks/useUsers";
 import { MdLogout } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const [usersSingle] = useUsers();
+  // const [usersSingle] = useUsers();
   // console.log(usersSingle);
 
   const navigate = useNavigate();
@@ -112,9 +112,9 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li className="hover:text-orange-600 mr-3 flex items-center">
-                    <p className="mx-3 font-light text-gray-600">
+                    {/* <p className="mx-3 font-light text-gray-600">
                       {usersSingle.username},
-                    </p>
+                    </p> */}
                     <Link to="/profile">
                       <CgProfile />
                     </Link>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const useUsers = () => {
   const userId = localStorage.getItem("userId");
   const [usersSingle, setUsersSignle] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -20,12 +21,14 @@ const useUsers = () => {
         setUsersSignle(res.data);
       } catch (err) {
         console.log(err);
+      } finally {
+        setLoading(false);
       }
     };
     getUsers();
   }, [userId]);
 
-  return [usersSingle];
+  return [usersSingle, loading];
 };
 
 export default useUsers;

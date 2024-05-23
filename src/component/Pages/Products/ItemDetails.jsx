@@ -21,7 +21,7 @@ const ItemDetails = () => {
   useEffect(() => {
     const getSingleItem = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/list/${id}`, {
+        const res = await axios.get(`http://127.0.0.1:8000/list/${id}`, {
           headers: {
             Authorization: `token ${localStorage.getItem("token")}`,
           },

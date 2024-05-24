@@ -16,12 +16,18 @@ const Products = () => {
             <img className="mx-auto w-36 h-36" src={load} alt="" />
           </div>
         </>
-      ) : (
+      ) : items.length > 0 ? (
         <div className="grid grid-cols-4  gap-4 my-6">
           {items.map((item) => (
             <ItemsSingle key={item?.id} item={item} />
           ))}
         </div>
+      ) : (
+        <>
+          <p className="text-center my-12 text-white bg-red-600 py-6">
+            No Products Found Or Server could not be Loaded at this time
+          </p>
+        </>
       )}
     </div>
   );

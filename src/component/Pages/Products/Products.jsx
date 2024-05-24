@@ -16,7 +16,7 @@ const Products = () => {
             <img className="mx-auto w-36 h-36" src={load} alt="" />
           </div>
         </>
-      ) : items.length > 0 ? (
+      ) : items?.length > 0 ? (
         <div className="grid grid-cols-4  gap-4 my-6">
           {items.map((item) => (
             <ItemsSingle key={item?.id} item={item} />

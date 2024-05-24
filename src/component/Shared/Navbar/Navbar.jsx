@@ -40,25 +40,6 @@ const Navbar = () => {
     }
   };
 
-  // const handleLogout = async () => {
-  //   try {
-  //     const res = await axios.get("http://localhost:8000/account/logout/", {
-  //       headers: {
-  //         Authorization: `Token ${localStorage.getItem("token")}`,
-  //       },
-  //     });
-  //     if (res.status == 200) {
-  //       console.log("logout successfull");
-  //       localStorage.removeItem("token");
-  //       localStorage.removeItem("userId");
-  //   navigate("/login");
-
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   return (
     <>
       <div className="navbar max-w-[1200px] mx-auto">
@@ -84,9 +65,15 @@ const Navbar = () => {
               <li className="hover:text-orange-600 mr-3">
                 <Link to="/shop">Shop</Link>
               </li>
-              <li className="hover:text-orange-600 mr-3">
-                <Link to="/sell">Sell-Item</Link>
-              </li>
+              {localStorage.getItem("token") ? (
+                <>
+                  <li className="hover:text-orange-600 mr-3">
+                    <Link to="/sell">Sell-Item</Link>
+                  </li>
+                </>
+              ) : (
+                <></>
+              )}
               <li className="hover:text-orange-600 mr-3">
                 <Link to="/contact">Contact Us</Link>
               </li>

@@ -5,10 +5,10 @@ const GellaryList = () => {
   return (
     <div className="max-w-[1200px] mx-4 md:mx-auto my-16 ">
       <div
-        className="grid grid-cols-1 md:grid-cols-3 gap-4 md:grid-template-columns-[1fr_2fr_1fr]"
+        className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-4"
         // style={{ gridTemplateColumns: "1fr 2fr 1fr" }}
       >
-        <div className="bg p-10 md:col-span-1">
+        <div className="bg p-10 col-span-1">
           <h1 className="text-4xl whitespace-nowrap">
             Smart <span className="font-bold">Watch</span>
           </h1>
@@ -22,8 +22,8 @@ const GellaryList = () => {
           </button>
         </div>
 
-        <div className="col-span-1 grid grid-rows-2 gap-4 text-white">
-          <div className="bg2 p-10 col-span-1">
+        <div className="col-span-1 grid md:grid-rows-2 gap-4 text-white">
+          <div className="bg2 p-10 col-span-1 md:row-span-1">
             <h1 className="text-4xl">
               Quality <span className="font-bold">Keyboard</span>
             </h1>
@@ -36,7 +36,7 @@ const GellaryList = () => {
               </span>{" "}
             </button>
           </div>
-          <div className="bg3 p-10 col-span-1 text-end">
+          <div className="bg3 p-10 col-span-1 md:row-span-1 text-end">
             <h1 className="text-4xl">
               Wireless <span className="font-bold">Headphone</span>
             </h1>

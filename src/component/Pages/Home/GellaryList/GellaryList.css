@@ -33,7 +33,7 @@
 
 /* @media screen and (max-width: 460px)  {
     .bg .bg2 .bg3 .bg4{
-        /* background-size: contain; */
-        /* height: 300px; */
-    /* }
-} */ 
+         background-size: contain;
+         height: 300px; 
+     }
+}  */

@@ -4,9 +4,9 @@ import { TfiHeadphoneAlt } from "react-icons/tfi";
 
 const Features = () => {
   return (
-    <div className="mt-24 my-12 border-2 border-gray-200 max-w-[1200px] mx-auto">
-      <div className="block md:flex justify-between items-center px-12 py-12">
-        <div className="flex items-center">
+    <div className="mt-24 my-12 border-2 border-gray-200 max-w-[1200px] md:mx-auto mx-6">
+      <div className="block md:flex justify-between items-center px-6  md:px-12 py-6 md:py-12">
+        <div className="flex items-center my-12 md:my-0">
           <span className="text-5xl mr-5">
             <BsTruck />
           </span>
@@ -17,7 +17,7 @@ const Features = () => {
             </p>
           </div>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center my-12 md:my-0">
           <span className="text-5xl mr-5">
             <TfiHeadphoneAlt />
           </span>
@@ -28,7 +28,7 @@ const Features = () => {
             </p>
           </div>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center my-12 md:my-0">
           <span className="text-5xl mr-5">
             <RiExchangeDollarLine />
           </span>

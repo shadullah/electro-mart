@@ -43,12 +43,12 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar max-w-[1200px] mx-auto">
-        <div className="first-bar flex justify-between items-center my-3 text-gray-500">
-          <div className="flex items-center">
-            <CiMail className="mr-2" />
-            <p>help@electro-mail.com</p>
+        <div className="first-bar flex justify-between items-center my-3 text-gray-500 mx-2 md:0">
+          <div className="flex items-center my-3">
+            <CiMail className="md:mr-2" />
+            <p className="text-sm md:text-md">help@electro-mail.com</p>
           </div>
-          <div className="flex text-xl space-x-3 ">
+          <div className="flex text-sm md:text-xl space-x-3 ">
             <FaFacebookF />
             <FaXTwitter />
             <FaInstagram />
@@ -58,7 +58,7 @@ const Navbar = () => {
         <hr />
         <div className="flex justify-between items-center py-6">
           <div>
-            <ul className="flex font-bold text-[16px]">
+            <ul className="flex font-bold text-[16px] opacity-0 md:opacity-100">
               <li className="hover:text-orange-600 mr-3">
                 <Link to="/">Home</Link>
               </li>
@@ -80,11 +80,11 @@ const Navbar = () => {
             </ul>
           </div>
           <div>
-            <h1 className="text-4xl font-semibold">
+            <h1 className="text-2xl md:text-4xl font-semibold whitespace-nowrap">
               <span className="text-orange-600">Electro</span> Mart
             </h1>
           </div>
-          <div className="my-3">
+          <div className="my-3 opacity-0 md:opacity-100">
             <ul className="flex items-center text-2xl">
               {localStorage.getItem("token") ? (
                 <>

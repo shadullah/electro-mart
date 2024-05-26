@@ -6,7 +6,7 @@ const Products = () => {
   const [items, loading] = useItems();
   return (
     <div className="max-w-[1200px] mx-auto my-12">
-      <h1 className="text-4xl">
+      <h1 className="text-4xl mx-6 md:mx-0">
         Our <span className="font-bold">Products</span>
       </h1>
 
@@ -17,7 +17,7 @@ const Products = () => {
           </div>
         </>
       ) : items?.length > 0 ? (
-        <div className="grid grid-cols-4  gap-4 my-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mx-6 md:mx-0 my-6">
           {items.map((item) => (
             <ItemsSingle key={item?.id} item={item} />
           ))}

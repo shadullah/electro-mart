@@ -8,7 +8,7 @@ const Footer = () => {
     <div>
       <footer className="bg-gray-900">
         <div className="max-w-[1200px] mx-auto">
-          <div className="block md:flex justify-between py-12 text-gray-400">
+          <div className="block md:flex justify-between px-12 md:px-0 py-12 text-gray-400">
             <div>
               <h1 className="text-4xl font-semibold my-4 text-white">
                 <span className="text-orange-600">Electro</span> Mart

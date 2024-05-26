@@ -3,34 +3,34 @@ const Companies = () => {
     <>
       <div className="max-w-[1200px] mx-auto">
         <hr />
-        <div className="flex justify-between items-center my-12">
+        <div className="block md:flex justify-between items-center mx-auto md:mx-0 my-12">
           <img
-            className="w-36"
+            className="w-36 mx-auto my-2 md:my-0"
             src="https://d-themes.com/wordpress/udesign/electronics/wp-content/uploads/sites/37/2022/05/1.png"
             alt="1"
           />
           <img
-            className="w-36"
+            className="w-36 mx-auto my-2 md:my-0"
             src="https://d-themes.com/wordpress/udesign/electronics/wp-content/uploads/sites/37/2022/05/2.png"
             alt="2"
           />
           <img
-            className="w-36"
+            className="w-36 mx-auto my-2 md:my-0"
             src="https://d-themes.com/wordpress/udesign/electronics/wp-content/uploads/sites/37/2022/05/3.png"
             alt="3"
           />
           <img
-            className="w-36"
+            className="w-36 mx-auto my-2 md:my-0"
             src="https://d-themes.com/wordpress/udesign/electronics/wp-content/uploads/sites/37/2022/05/4.png"
             alt="4"
           />
           <img
-            className="w-36"
+            className="w-36 mx-auto my-2 md:my-0"
             src="https://d-themes.com/wordpress/udesign/electronics/wp-content/uploads/sites/37/2022/05/5.png"
             alt="5"
           />
           <img
-            className="w-36"
+            className="w-36 mx-auto my-2 md:my-0"
             src="https://d-themes.com/wordpress/udesign/electronics/wp-content/uploads/sites/37/2022/06/6.png"
             alt="6"
           />

@@ -27,7 +27,7 @@ const useItems = () => {
       }
     };
     getItems();
-  }, [urls]);
+  }, []);
 
   return [items, loading];
 };

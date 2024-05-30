@@ -5,7 +5,7 @@ const useItems = () => {
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
   const urls = [
-    "https://work-notes-server.onrender.com/todo/list/",
+    "https://electro-mart-backend.onrender.com/",
     "http://127.0.0.1:8000/list/",
   ];
 

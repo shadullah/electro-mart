@@ -56,7 +56,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="pt-6 pb-12 flex justify-between items-center">
+      <div className="pt-6 pb-12 block md:flex justify-between items-center">
         <div>
           <img className="animate-slowMove" src={login} alt="" />
         </div>

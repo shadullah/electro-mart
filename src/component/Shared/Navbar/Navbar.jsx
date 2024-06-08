@@ -1,5 +1,6 @@
 import { CiMail } from "react-icons/ci";
 import {
+  FaBars,
   FaFacebookF,
   FaHeart,
   FaInstagram,
@@ -7,17 +8,31 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { GoPerson } from "react-icons/go";
-import { IoCartOutline } from "react-icons/io5";
+import { IoCartOutline, IoCloseCircleOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 // import useUsers from "../../../Hooks/useUsers";
 import { MdLogout } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 const Navbar = () => {
   // const [usersSingle] = useUsers();
   // console.log(usersSingle);
+  const [toggle, setToggle] = useState(false);
+  const [usertoggle, setUserToggle] = useState(false);
+  const [close, setClose] = useState(true);
+
+  const closeToggle = () => {
+    setToggle(false);
+    setClose(true);
+  };
+
+  const closeUserMenu = () => {
+    setUserToggle(false);
+    setClose(true);
+  };
 
   const navigate = useNavigate();
 
@@ -56,9 +71,27 @@ const Navbar = () => {
           </div>
         </div>
         <hr />
-        <div className="flex justify-between items-center py-6">
-          <div>
-            <ul className="flex font-bold text-[16px] opacity-0 md:opacity-100">
+
+        <div className="flex justify-between items-center py-3 md:py-6">
+          <div onClick={() => setToggle(!toggle)} className=" md:hidden ml-6">
+            <FaBars />
+          </div>
+          <div
+            className={`w-full md:w-[300px] absolute flex items-center md:static py-2 md:bg-white bg-slate-300 z-10
+            ${
+              toggle
+                ? "top-0 h-screen px-3  ease-in-out transition-all duration-1000"
+                : "-top-full  ease-in-out transition-all duration-1000"
+            }
+             `}
+          >
+            <p
+              onClick={closeToggle}
+              className="text-3xl absolute top-0 my-6 mx-6 md:hidden"
+            >
+              <IoCloseCircleOutline />
+            </p>
+            <ul className="md:flex justify-center items-center font-bold md:text-[16px] p-3 md:p-0 text-2xl space-y-3 md:space-y-0 mx-auto">
               <li className="hover:text-orange-600 mr-3">
                 <Link to="/">Home</Link>
               </li>
@@ -80,48 +113,72 @@ const Navbar = () => {
             </ul>
           </div>
           <div>
-            <h1 className="text-2xl md:text-4xl font-semibold whitespace-nowrap">
-              <span className="text-orange-600">Electro</span> Mart
-            </h1>
+            <Link to="/">
+              <h1 className="text-2xl md:text-4xl font-semibold whitespace-nowrap">
+                <span className="text-orange-600">Electro</span> Mart
+              </h1>
+            </Link>
           </div>
-          <div className="my-3 opacity-0 md:opacity-100">
-            <ul className="flex items-center text-2xl">
-              {localStorage.getItem("token") ? (
-                <>
-                  <li className="hover:text-orange-600 mr-3">
-                    <Link to="/wishlist">
-                      <FaHeart />
-                    </Link>
-                  </li>
-                  <li className="hover:text-orange-600 mr-3">
-                    <Link to="/cart">
-                      <IoCartOutline />
-                    </Link>
-                  </li>
-                  <li className="hover:text-orange-600 mr-3 flex items-center">
-                    {/* <p className="mx-3 font-light text-gray-600">
+          <div className=" mr-6 md:mr-0">
+            <div onClick={() => setUserToggle(!toggle)} className=" md:hidden">
+              <GoPerson title="Login" />
+            </div>
+            <div
+              className={`w-full absolute flex items-center md:static py-2 md:bg-white bg-slate-300 z-10
+            ${
+              usertoggle
+                ? "top-0 right-0 h-screen px-3  ease-in-out transition-all duration-1000"
+                : "-top-full  ease-in-out transition-all duration-1000"
+            }
+             `}
+              // className={`my-3 absolute md:static md:opacity-100`}
+            >
+              <>
+                <p
+                  onClick={closeUserMenu}
+                  className="text-3xl top-0 absolute my-6 mx-6 md:hidden"
+                >
+                  <IoCloseCircleOutline />
+                </p>
+              </>
+              <ul className="block md:flex justify-center items-center font-bold md:text-2xl p-3 md:p-0 text-3xl space-y-3 md:space-y-0 mx-auto">
+                {localStorage.getItem("token") ? (
+                  <>
+                    <li className="hover:text-orange-600 mr-3">
+                      <Link to="/wishlist">
+                        <FaHeart />
+                      </Link>
+                    </li>
+                    <li className="hover:text-orange-600 mr-3 flex justify-center">
+                      <Link to="/cart">
+                        <IoCartOutline />
+                      </Link>
+                    </li>
+                    <li className="hover:text-orange-600 mr-3 flex justify-center items-center">
+                      {/* <p className="mx-3 font-light text-gray-600">
                       {usersSingle.username},
                     </p> */}
-                    <Link to="/profile">
-                      <CgProfile />
-                    </Link>
-                  </li>
-                  <li className="hover:text-orange-600 mr-3">
-                    <button onClick={handleLogout}>
-                      <MdLogout title="Logout" />
-                    </button>
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li className="hover:text-orange-600 mr-3">
-                    <Link to="/login">
-                      <GoPerson title="Login" />
-                    </Link>
-                  </li>
-                </>
-              )}
-            </ul>
+                      <Link to="/profile">
+                        <CgProfile />
+                      </Link>
+                    </li>
+                    <li className="hover:text-orange-600 mr-3 flex justify-center">
+                      <button onClick={handleLogout}>
+                        <MdLogout title="Logout" />
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li className="hover:text-orange-600 mr-3 flex justify-center">
+                      <Link to="/login">
+                        <GoPerson title="Login" />
+                      </Link>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

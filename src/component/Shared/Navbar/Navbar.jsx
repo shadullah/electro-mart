@@ -15,24 +15,53 @@ import { MdLogout } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
   // const [usersSingle] = useUsers();
   // console.log(usersSingle);
   const [toggle, setToggle] = useState(false);
   const [usertoggle, setUserToggle] = useState(false);
-  const [close, setClose] = useState(true);
+  // const [close, setClose] = useState(true);
+  const menu = useRef(null);
+  const userMenu = useRef(null);
 
-  const closeToggle = () => {
-    setToggle(false);
-    setClose(true);
+  const handleOutside = (e) => {
+    if (
+      menu.current &&
+      !menu.current.contains(e.target) &&
+      userMenu.current &&
+      !userMenu.current.contains(e.target)
+    ) {
+      setToggle(false);
+      setUserToggle(false);
+    }
   };
 
-  const closeUserMenu = () => {
-    setUserToggle(false);
-    setClose(true);
-  };
+  useEffect(() => {
+    document.addEventListener("click", handleOutside);
+    return () => {
+      document.removeEventListener("click", handleOutside);
+    };
+  }, []);
+
+  // const closeToggle = () => {
+  //   setToggle(false);
+  //   setClose(true);
+  // };
+
+  // const closeUserMenu = () => {
+  //   setUserToggle(false);
+  //   setClose(true);
+  // };
+
+  useEffect(() => {
+    if (toggle || usertoggle) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [toggle, usertoggle]);
 
   const navigate = useNavigate();
 
@@ -73,11 +102,18 @@ const Navbar = () => {
         <hr />
 
         <div className="flex justify-between items-center py-3 md:py-6">
-          <div onClick={() => setToggle(!toggle)} className=" md:hidden ml-6">
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              setToggle(!toggle);
+            }}
+            className=" md:hidden ml-6"
+          >
             <FaBars />
           </div>
           <div
-            className={`w-full md:w-[300px] absolute flex items-center md:static py-2 md:bg-white bg-slate-300 z-10
+            ref={menu}
+            className={`w-72 md:w-[350px] absolute flex items-center md:static py-2 md:bg-white bg-slate-300 z-10
             ${
               toggle
                 ? "top-0 h-screen px-3  ease-in-out transition-all duration-1000"
@@ -86,7 +122,10 @@ const Navbar = () => {
              `}
           >
             <p
-              onClick={closeToggle}
+              onClick={(e) => {
+                e.stopPropagation();
+                setToggle(false);
+              }}
               className="text-3xl absolute top-0 my-6 mx-6 md:hidden"
             >
               <IoCloseCircleOutline />
@@ -120,11 +159,18 @@ const Navbar = () => {
             </Link>
           </div>
           <div className=" mr-6 md:mr-0">
-            <div onClick={() => setUserToggle(!toggle)} className=" md:hidden">
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                setUserToggle(!usertoggle);
+              }}
+              className=" md:hidden"
+            >
               <GoPerson title="Login" />
             </div>
             <div
-              className={`w-full absolute flex items-center md:static py-2 md:bg-white bg-slate-300 z-10
+              ref={userMenu}
+              className={`w-72 absolute flex items-center md:static py-2 md:bg-white bg-slate-300 z-10
             ${
               usertoggle
                 ? "top-0 right-0 h-screen px-3  ease-in-out transition-all duration-1000"
@@ -135,7 +181,10 @@ const Navbar = () => {
             >
               <>
                 <p
-                  onClick={closeUserMenu}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setUserToggle(false);
+                  }}
                   className="text-3xl top-0 absolute my-6 mx-6 md:hidden"
                 >
                   <IoCloseCircleOutline />

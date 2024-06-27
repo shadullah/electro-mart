@@ -26,8 +26,8 @@ const Navbar = () => {
   const menu = useRef(null);
   const userMenu = useRef(null);
   const urls = [
-    "http://localhost:8000/account/logout/",
     "https://electro-mart-backend.onrender.com/account/logout/",
+    "http://localhost:8000/account/logout/",
     "https://electro-mart-backend.up.railway.app/account/logout",
   ];
 

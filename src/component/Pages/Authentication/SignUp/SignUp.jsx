@@ -8,8 +8,8 @@ import toast from "react-hot-toast";
 const SignUp = () => {
   const navigate = useNavigate();
   const urls = [
-    "http://localhost:8000/account/register/",
     "https://electro-mart-backend.onrender.com/account/register/",
+    "http://localhost:8000/account/register/",
     "https://electro-mart-backend.up.railway.app/account/register",
   ];
 

@@ -17,21 +17,28 @@ const ItemDetails = () => {
   const userId = localStorage.getItem("userId");
   //   console.log(userId);
   const navigate = useNavigate();
+  const urls = [
+    `http://localhost:8000/list/${id}`,
+    `https://electro-mart-backend.onrender.com/list/${id}`,
+    `https://electro-mart-backend.up.railway.app/list/${id}`,
+  ];
 
   useEffect(() => {
     const getSingleItem = async () => {
-      try {
-        const res = await axios.get(`http://127.0.0.1:8000/list/${id}`, {
-          headers: {
-            Authorization: `token ${localStorage.getItem("token")}`,
-          },
-        });
-        setItem(res?.data);
-        console.log(res?.data);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setLoading(false);
+      for (const url of urls) {
+        try {
+          const res = await axios.get(url, {
+            headers: {
+              Authorization: `token ${localStorage.getItem("token")}`,
+            },
+          });
+          setItem(res?.data);
+          console.log(res?.data);
+        } catch (err) {
+          console.log(err);
+        } finally {
+          setLoading(false);
+        }
       }
     };
     getSingleItem();

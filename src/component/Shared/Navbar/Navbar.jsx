@@ -25,6 +25,11 @@ const Navbar = () => {
   // const [close, setClose] = useState(true);
   const menu = useRef(null);
   const userMenu = useRef(null);
+  const urls = [
+    "http://localhost:8000/account/logout/",
+    "https://electro-mart-backend.onrender.com/account/logout/",
+    "https://electro-mart-backend.up.railway.app/account/logout",
+  ];
 
   const handleOutside = (e) => {
     if (
@@ -66,21 +71,23 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    try {
-      const res = await axios.get("http://localhost:8000/account/logout/", {
-        headers: {
-          Authorization: `Token ${localStorage.getItem("token")}`,
-        },
-      });
-      if (res.status == 200) {
-        console.log("Logout Success");
-        localStorage.removeItem("token");
-        localStorage.removeItem("userId");
-        toast.success("Logout Successfully");
-        navigate("/login");
+    for (const url of urls) {
+      try {
+        const res = await axios.get(url, {
+          headers: {
+            Authorization: `Token ${localStorage.getItem("token")}`,
+          },
+        });
+        if (res.status == 200) {
+          console.log("Logout Success");
+          localStorage.removeItem("token");
+          localStorage.removeItem("userId");
+          toast.success("Logout Successfully");
+          navigate("/login");
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   };
 

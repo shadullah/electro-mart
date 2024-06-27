@@ -7,6 +7,11 @@ import { useState } from "react";
 const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const urls = [
+    "https://electro-mart-backend.onrender.com/account/login/",
+    "https://electro-mart-backend.up.railway.app/account/login/",
+    "http://127.0.0.1:8000/account/login/",
+  ];
   // const location = useLocation();
 
   // const from = location.state?.form?.pathname || "/";
@@ -19,38 +24,37 @@ const Login = () => {
     const password = form.password.value;
 
     // console.log(username, password);
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/account/login/",
-        {
+    for (const url of urls) {
+      try {
+        const response = await axios.post(url, {
           email: email,
           password: password,
-        }
-      );
-      if (response.data?.token) {
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("userId", response.data.user_id);
+        });
+        if (response.data?.token) {
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("userId", response.data.user_id);
 
-        // navigate(from, { replace: true });
-        navigate("/");
-        toast.success("Logged In successfully", { duration: 6000 });
-        console.log("Login successful", response.data);
-      } else {
-        navigate("/login");
-        toast.error(response.data, { duration: 6000 });
-        console.error("No token returned from API");
+          // navigate(from, { replace: true });
+          navigate("/");
+          toast.success("Logged In successfully", { duration: 6000 });
+          console.log("Login successful", response.data);
+        } else {
+          navigate("/login");
+          toast.error(response.data, { duration: 6000 });
+          console.error("No token returned from API");
+        }
+      } catch (error) {
+        const errorMessage =
+          error.response && error.response.data
+            ? JSON.stringify(error.response.data)
+            : "Login information is not correct";
+        setError(errorMessage);
+        toast.error(errorMessage, { duration: 6000 });
+        console.error(
+          "Login failed",
+          error.response ? error.response.data : error
+        );
       }
-    } catch (error) {
-      const errorMessage =
-        error.response && error.response.data
-          ? JSON.stringify(error.response.data)
-          : "Login information is not correct";
-      setError(errorMessage);
-      toast.error(errorMessage, { duration: 6000 });
-      console.error(
-        "Login failed",
-        error.response ? error.response.data : error
-      );
     }
   };
 

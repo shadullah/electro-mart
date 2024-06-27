@@ -7,6 +7,11 @@ import toast from "react-hot-toast";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const urls = [
+    "http://localhost:8000/account/register/",
+    "https://electro-mart-backend.onrender.com/account/register/",
+    "https://electro-mart-backend.up.railway.app/account/register",
+  ];
 
   const {
     register,
@@ -21,34 +26,37 @@ const SignUp = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/account/register/",
-        {
+    for (const url of urls) {
+      try {
+        const response = await axios.post(url, {
           username: data.username,
           first_name: data.first_name,
           last_name: data.last_name,
           email: data.email,
           password: data.password,
           confirm_password: data.confirm_password,
-        }
-      );
-      // toast.loading("Wait for server response");
-
-      if (response.status === 200) {
-        console.log("Registration successful", response.data);
-        navigate("/");
-        toast.success("Registration successfull, Please Login", response.data, {
-          duration: 3000,
         });
-        navigate("/login");
-      } else {
-        reset();
-        toast.error(response.data, { duration: 4000 });
-        console.error("Registration failed", response.data);
+        // toast.loading("Wait for server response");
+
+        if (response.status === 200) {
+          console.log("Registration successful", response.data);
+          navigate("/");
+          toast.success(
+            "Registration successfull, Please Login",
+            response.data,
+            {
+              duration: 3000,
+            }
+          );
+          navigate("/login");
+        } else {
+          reset();
+          toast.error(response.data, { duration: 4000 });
+          console.error("Registration failed", response.data);
+        }
+      } catch (error) {
+        console.error("An error occurred during registration", error);
       }
-    } catch (error) {
-      console.error("An error occurred during registration", error);
     }
   };
 

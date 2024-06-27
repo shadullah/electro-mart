@@ -6,9 +6,25 @@ const Products = () => {
   const [items, loading] = useItems();
   return (
     <div className="max-w-[1200px] mx-auto my-12">
-      <h1 className="text-4xl mx-6 md:mx-0">
-        Our <span className="font-bold">Products</span>
-      </h1>
+      <div className="block md:flex items-center justify-between">
+        <h1 className="text-4xl mx-6 md:mx-0">
+          Our <span className="font-bold">Products</span>
+        </h1>
+        <div className="space-x-4 space-y-4 mx-4 md:mx-0">
+          <button className="border-2 border-gray-400 px-3 py-2 font-semibold hover:text-orange-400 hover:border-orange-400 ease-in-out duration-200">
+            Watch
+          </button>
+          <button className="border-2 border-gray-400 px-3 py-2 font-semibold hover:text-orange-400 hover:border-orange-400 ease-in-out duration-200">
+            Camera
+          </button>
+          <button className="border-2 border-gray-400 px-3 py-2 font-semibold hover:text-orange-400 hover:border-orange-400 ease-in-out duration-200">
+            Headphone
+          </button>
+          <button className="border-2 border-gray-400 px-3 py-2 font-semibold hover:text-orange-400 hover:border-orange-400 ease-in-out duration-200">
+            Mouse
+          </button>
+        </div>
+      </div>
 
       {loading ? (
         <>

@@ -6,6 +6,7 @@ const useItems = () => {
   const [items, setItems] = useState([]);
   const urls = [
     "https://electro-mart-backend.onrender.com/list/",
+    "https://electro-mart-backend.up.railway.app/list/",
     "http://127.0.0.1:8000/list/",
   ];
 

@@ -130,7 +130,7 @@ const Navbar = () => {
             >
               <IoCloseCircleOutline />
             </p>
-            <ul className="md:flex justify-center items-center font-bold md:text-[16px] p-3 md:p-0 text-2xl space-y-3 md:space-y-0 mx-auto">
+            <ul className="md:flex text-start items-center font-bold md:text-[16px] p-3 md:p-0 text-2xl space-y-3 md:space-y-0 mx-auto">
               <li className="hover:text-orange-600 mr-3">
                 <Link to="/">Home</Link>
               </li>

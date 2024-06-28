@@ -27,7 +27,7 @@ const Navbar = () => {
   const userMenu = useRef(null);
   const urls = [
     "https://electro-mart-backend.onrender.com/account/logout/",
-    "http://localhost:8000/account/logout/",
+    // "http://localhost:8000/account/logout/",
     "https://electro-mart-backend.up.railway.app/account/logout",
   ];
 
@@ -200,17 +200,17 @@ const Navbar = () => {
               <ul className="block md:flex justify-center items-center font-bold md:text-2xl p-3 md:p-0 text-3xl space-y-3 md:space-y-0 mx-auto">
                 {localStorage.getItem("token") ? (
                   <>
-                    <li className="hover:text-orange-600 mr-3">
+                    <li className="hover:text-orange-600 mr-6">
                       <Link to="/wishlist">
                         <FaHeart />
                       </Link>
                     </li>
-                    <li className="hover:text-orange-600 mr-3 flex justify-center">
+                    <li className="hover:text-orange-600 mr-6 flex justify-center">
                       <Link to="/cart">
                         <IoCartOutline />
                       </Link>
                     </li>
-                    <li className="hover:text-orange-600 mr-3 flex justify-center items-center">
+                    <li className="hover:text-orange-600 mr-6 flex justify-center items-center">
                       {/* <p className="mx-3 font-light text-gray-600">
                       {usersSingle.username},
                     </p> */}
@@ -218,7 +218,7 @@ const Navbar = () => {
                         <CgProfile />
                       </Link>
                     </li>
-                    <li className="hover:text-orange-600 mr-3 flex justify-center">
+                    <li className="hover:text-orange-600  flex justify-center">
                       <button onClick={handleLogout}>
                         <MdLogout title="Logout" />
                       </button>

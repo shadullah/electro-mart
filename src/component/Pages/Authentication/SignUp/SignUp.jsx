@@ -10,7 +10,7 @@ const SignUp = () => {
   const urls = [
     "https://electro-mart-backend.onrender.com/account/register/",
     "http://localhost:8000/account/register/",
-    "https://electro-mart-backend.up.railway.app/account/register",
+    "https://electro-mart-backend.up.railway.app/account/register/",
   ];
 
   const {

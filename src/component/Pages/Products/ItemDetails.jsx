@@ -44,17 +44,25 @@ const ItemDetails = () => {
     getSingleItem();
   }, [id]);
 
+  const deleteUrls = [
+    `https://electro-mart-backend.onrender.com/list/${item?.id}`,
+    `https://electro-mart-backend.up.railway.app/list/${item?.id}`,
+    `http://localhost:8000/list/${item?.id}`,
+  ];
+
   const handleDelete = async () => {
-    try {
-      await axios.delete(`http://localhost:8000/list/${item?.id}`, {
-        headers: {
-          Authorization: `token ${localStorage.getItem("token")}`,
-        },
-      });
-      navigate("/shop");
-      toast.success("Delete Success");
-    } catch (err) {
-      toast.error(err);
+    for (const url of deleteUrls) {
+      try {
+        await axios.delete(url, {
+          headers: {
+            Authorization: `token ${localStorage.getItem("token")}`,
+          },
+        });
+        navigate("/shop");
+        toast.success("Delete Success");
+      } catch (err) {
+        toast.error(err);
+      }
     }
   };
 

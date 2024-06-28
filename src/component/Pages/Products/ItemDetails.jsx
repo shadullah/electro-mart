@@ -47,7 +47,6 @@ const ItemDetails = () => {
   const deleteUrls = [
     `https://electro-mart-backend.onrender.com/list/${item?.id}`,
     `https://electro-mart-backend.up.railway.app/list/${item?.id}`,
-    `http://localhost:8000/list/${item?.id}`,
   ];
 
   const handleDelete = async () => {

@@ -19,7 +19,7 @@ const ItemDetails = () => {
   const navigate = useNavigate();
   const urls = [
     `https://electro-mart-backend.onrender.com/list/${id}`,
-    `http://localhost:8000/list/${id}`,
+    // `http://localhost:8000/list/${id}`,
     `https://electro-mart-backend.up.railway.app/list/${id}`,
   ];
 
@@ -46,7 +46,7 @@ const ItemDetails = () => {
 
   const deleteUrls = [
     `https://electro-mart-backend.onrender.com/list/${item?.id}`,
-    `https://electro-mart-backend.up.railway.app/list/${item?.id}`,
+    // `https://electro-mart-backend.up.railway.app/list/${item?.id}`,
   ];
 
   const handleDelete = async () => {

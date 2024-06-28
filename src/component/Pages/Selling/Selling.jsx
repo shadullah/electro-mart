@@ -6,6 +6,11 @@ import { useNavigate } from "react-router-dom";
 const Selling = () => {
   const navigate = useNavigate();
   const [users] = useUsers();
+  const urls = [
+    `https://electro-mart-backend.onrender.com/list/`,
+    `https://electro-mart-backend.up.railway.app/list/`,
+    `http://localhost:8000/list/`,
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,28 +22,30 @@ const Selling = () => {
 
     console.log(url, price, title, des, condition);
 
-    try {
-      await axios.post(
-        "http://localhost:8000/list/",
-        {
-          user: users,
-          title: title,
-          description: des,
-          price: price,
-          condition: condition,
-          image: url,
-        },
-        {
-          headers: {
-            Authorization: `token ${localStorage.getItem("token")}`,
+    for (const url of urls) {
+      try {
+        await axios.post(
+          url,
+          {
+            user: users,
+            title: title,
+            description: des,
+            price: price,
+            condition: condition,
+            image: url,
           },
-        }
-      );
-      navigate("/shop");
-      toast.success("Item added success");
-    } catch (err) {
-      toast.error("Failed to add");
-      console.log(err);
+          {
+            headers: {
+              Authorization: `token ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        navigate("/shop");
+        toast.success("Item added success");
+      } catch (err) {
+        toast.error("Failed to add");
+        console.log(err);
+      }
     }
   };
 

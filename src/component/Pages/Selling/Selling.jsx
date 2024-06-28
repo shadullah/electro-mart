@@ -8,7 +8,7 @@ const Selling = () => {
   const [users] = useUsers();
   const urls = [
     `https://electro-mart-backend.onrender.com/list/`,
-    `https://electro-mart-backend.up.railway.app/list/`,
+    // `https://electro-mart-backend.up.railway.app/list/`,
     // `http://localhost:8000/list/`,
   ];
 

@@ -18,11 +18,14 @@ const ItemUpdate = () => {
   useEffect(() => {
     const getItem = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/list/${id}/`, {
-          // headers: {
-          //   Authorization: `token ${localStorage.getItem("token")}`,
-          // },
-        });
+        const res = await axios.get(
+          `https://electro-mart-backend.onrender.com/list/${id}/`,
+          {
+            // headers: {
+            //   Authorization: `token ${localStorage.getItem("token")}`,
+            // },
+          }
+        );
         setTitle(res.data?.title);
         setDes(res.data?.description);
         setPrice(res.data?.price);
@@ -49,7 +52,7 @@ const ItemUpdate = () => {
 
     try {
       await axios.put(
-        `http://localhost:8000/list/${id}/`,
+        `https://electro-mart-backend.onrender.com/list/${id}/`,
         {
           title: title,
           description: description,

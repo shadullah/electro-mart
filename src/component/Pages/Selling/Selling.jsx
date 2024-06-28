@@ -9,7 +9,7 @@ const Selling = () => {
   const urls = [
     `https://electro-mart-backend.onrender.com/list/`,
     `https://electro-mart-backend.up.railway.app/list/`,
-    `http://localhost:8000/list/`,
+    // `http://localhost:8000/list/`,
   ];
 
   const handleSubmit = async (e) => {
@@ -22,10 +22,10 @@ const Selling = () => {
 
     console.log(url, price, title, des, condition);
 
-    for (const url of urls) {
+    for (const urlLink of urls) {
       try {
         await axios.post(
-          url,
+          urlLink,
           {
             user: users,
             title: title,

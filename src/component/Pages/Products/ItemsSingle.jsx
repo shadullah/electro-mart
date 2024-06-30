@@ -25,12 +25,12 @@ const ItemsSingle = ({ item }) => {
             }`}
           >
             <div className="">
-              <button className="hover:bg-orange-500 bg-white rounded-full w-12 h-12 duration-500 ease-in-out flex items-center justify-center">
-                <IoCartOutline className="text-gray-600" />
+              <button className="hover:bg-orange-500  bg-white rounded-full w-12 h-12 duration-500 ease-in-out flex items-center justify-center text-gray-600 hover:text-white">
+                <IoCartOutline className="" />
               </button>
               <br />
-              <button className="hover:bg-orange-500 bg-white rounded-full w-12 h-12 duration-500 ease-in-out flex items-center justify-center">
-                <CiHeart className="text-gray-600" />
+              <button className="hover:bg-orange-500 bg-white rounded-full w-12 h-12 duration-500 ease-in-out flex items-center justify-center text-gray-600 hover:text-white">
+                <CiHeart className="" />
               </button>
             </div>
           </div>

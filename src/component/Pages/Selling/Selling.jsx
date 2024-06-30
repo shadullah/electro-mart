@@ -9,7 +9,7 @@ const Selling = () => {
   const urls = [
     `https://electro-mart-backend.onrender.com/list/`,
     // `https://electro-mart-backend.up.railway.app/list/`,
-    // `http://localhost:8000/list/`,
+    `http://localhost:8000/list/`,
   ];
 
   const handleSubmit = async (e) => {

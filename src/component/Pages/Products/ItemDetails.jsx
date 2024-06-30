@@ -28,9 +28,9 @@ const ItemDetails = () => {
       for (const url of urls) {
         try {
           const res = await axios.get(url, {
-            headers: {
-              Authorization: `token ${localStorage.getItem("token")}`,
-            },
+            // headers: {
+            //   Authorization: `token ${localStorage.getItem("token")}`,
+            // },
           });
           setItem(res?.data);
           console.log(res?.data);
@@ -47,6 +47,7 @@ const ItemDetails = () => {
   const deleteUrls = [
     `https://electro-mart-backend.onrender.com/list/${item?.id}`,
     // `https://electro-mart-backend.up.railway.app/list/${item?.id}`,
+    `http://127.0.0.1:8000/list/${item?.id}`,
   ];
 
   const handleDelete = async () => {
@@ -104,7 +105,8 @@ const ItemDetails = () => {
                 <p className="text-gray-600  my-3">
                   Seller: {item?.user?.username}
                 </p>
-                <h4>Category: </h4>
+                <h4>Category: {item?.category?.name}</h4>
+                {console.log(item?.category)}
                 <h4>
                   Condition:{" "}
                   <span className="text-yellow-600 uppercase">

@@ -30,7 +30,10 @@ const Products = () => {
           >
             Speaker
           </button>
-          <button className="border-2 border-gray-400 px-3 py-2 font-semibold hover:text-orange-400 hover:border-orange-400 ease-in-out duration-200">
+          <button
+            onClick={() => setSearch("Mouse")}
+            className="border-2 border-gray-400 px-3 py-2 font-semibold hover:text-orange-400 hover:border-orange-400 ease-in-out duration-200"
+          >
             Mouse
           </button>
         </div>

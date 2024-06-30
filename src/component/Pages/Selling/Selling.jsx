@@ -95,6 +95,16 @@ const Selling = () => {
             required
           />
           <br />
+          {/* <label>Category</label>
+          <br />
+          <input
+            name="category"
+            className="w-1/3 outline-none border-2 border-gray-300 p-3 my-3"
+            type="text"
+            placeholder="category"
+            required
+          />
+          <br /> */}
           <label>Price</label>
           <br />
           <input

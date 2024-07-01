@@ -8,7 +8,6 @@ const Selling = () => {
   const navigate = useNavigate();
   const [users] = useUsers();
   const [category, setCat] = useState([]);
-  const [selectCat, setSelectCat] = useState("");
   const urls = [
     `https://electro-mart-backend.onrender.com/list/`,
     // `https://electro-mart-backend.up.railway.app/list/`,
@@ -127,8 +126,6 @@ const Selling = () => {
             className="w-1/3 outline-none border-2 border-gray-300 p-3 my-3"
             name="category"
             id="category"
-            value={selectCat}
-            onChange={(e) => setSelectCat(e.target.value)}
           >
             <option className="text-base" value="" disabled>
               Set Priority here

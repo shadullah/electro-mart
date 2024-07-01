@@ -35,9 +35,8 @@ const ItemsSingle = ({ item }) => {
             </div>
           </div>
           <div className="my-3">
-            <Link to={`/shop/${item.id}`}>
-              <h1 className="text-sm">{title}</h1>{" "}
-            </Link>
+            {/* <Link to={`/shop/${item.id}`}> */}
+            <h1 className="text-sm">{title}</h1> {/* </Link> */}
             <p className="font-bold mt-2 text-2xl">${price}</p>
           </div>
         </div>

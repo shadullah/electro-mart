@@ -62,7 +62,7 @@ const ItemUpdate = () => {
     const description = e.target.des.value;
     const price = e.target.price.value;
     const condition = e.target.condition.value;
-    const categorySelect = e.target.condition.value;
+    const categorySelect = e.target.category.value;
     const image = e.target.url.value;
 
     console.log(url, description, title);

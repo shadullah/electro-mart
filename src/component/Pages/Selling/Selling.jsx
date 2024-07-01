@@ -31,45 +31,31 @@ const Selling = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    // const url = e.target.url.value;
-    // const title = e.target.title.value;
-    // const des = e.target.des.value;
-    // const price = e.target.price.value;
-    // const categorySelect = e.target.category.value;
-    // const condition = e.target.condition.value;
-    const url = formData.get("url");
-    const title = formData.get("title");
-    const des = formData.get("des");
-    const price = formData.get("price");
-    const categorySelect = formData.get("category");
-    const condition = formData.get("condition");
+    const url = e.target.url.value;
+    const title = e.target.title.value;
+    const des = e.target.des.value;
+    const price = e.target.price.value;
+    const categorySelect = e.target.category.value;
+    const condition = e.target.condition.value;
 
-    // const categoryObj = category.find(
-    //   (cat) => cat.id == parseInt(categorySelect)
-    // );
+    const categoryObj = category.find(
+      (cat) => cat.id == parseInt(categorySelect)
+    );
 
-    console.log(url, price, title, des, categorySelect, condition);
+    console.log(url, price, title, des, categoryObj, condition);
 
     for (const urlLink of urls) {
       try {
         await axios.post(
           urlLink,
           {
-            // user: users,
-            // title: title,
-            // description: des,
-            // price: price,
-            // condition: condition,
-            // category: [category.slug],
-            // image: url,
             user: users,
-            title,
-            des,
-            price,
-            condition,
-            category,
-            url,
+            title: title,
+            description: des,
+            price: price,
+            condition: condition,
+            category: [category.slug],
+            image: url,
           },
           {
             headers: {

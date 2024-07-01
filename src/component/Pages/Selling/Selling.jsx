@@ -8,6 +8,7 @@ const Selling = () => {
   const navigate = useNavigate();
   const [users] = useUsers();
   const [category, setCat] = useState([]);
+  const [selectCat, setSelectCat] = useState("");
   const urls = [
     `https://electro-mart-backend.onrender.com/list/`,
     // `https://electro-mart-backend.up.railway.app/list/`,
@@ -30,31 +31,45 @@ const Selling = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = e.target.url.value;
-    const title = e.target.title.value;
-    const des = e.target.des.value;
-    const price = e.target.price.value;
-    const categorySelect = e.target.category.value;
-    const condition = e.target.condition.value;
+    const formData = new FormData(e.currentTarget);
+    // const url = e.target.url.value;
+    // const title = e.target.title.value;
+    // const des = e.target.des.value;
+    // const price = e.target.price.value;
+    // const categorySelect = e.target.category.value;
+    // const condition = e.target.condition.value;
+    const url = formData.get("url");
+    const title = formData.get("title");
+    const des = formData.get("des");
+    const price = formData.get("price");
+    const categorySelect = formData.get("category");
+    const condition = formData.get("condition");
 
-    const categoryObj = category.find(
-      (cat) => cat.id == parseInt(categorySelect)
-    );
+    // const categoryObj = category.find(
+    //   (cat) => cat.id == parseInt(categorySelect)
+    // );
 
-    console.log(url, price, title, des, categoryObj, condition);
+    console.log(url, price, title, des, categorySelect, condition);
 
     for (const urlLink of urls) {
       try {
         await axios.post(
           urlLink,
           {
+            // user: users,
+            // title: title,
+            // description: des,
+            // price: price,
+            // condition: condition,
+            // category: [category.slug],
+            // image: url,
             user: users,
-            title: title,
-            description: des,
-            price: price,
-            condition: condition,
-            category: [category.slug],
-            image: url,
+            title,
+            des,
+            price,
+            condition,
+            category,
+            url,
           },
           {
             headers: {
@@ -125,8 +140,9 @@ const Selling = () => {
             // className="border-b-2 border-violet-500 py-2 px-3 text-gray-400 font-bold"
             className="w-1/3 outline-none border-2 border-gray-300 p-3 my-3"
             name="category"
-            id=""
-            defaultValue=""
+            id="category"
+            value={selectCat}
+            onChange={(e) => setSelectCat(e.target.value)}
           >
             <option className="text-base" value="" disabled>
               Set Priority here

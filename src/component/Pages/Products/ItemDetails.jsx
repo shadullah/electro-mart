@@ -20,7 +20,7 @@ const ItemDetails = () => {
   const urls = [
     `https://electro-mart-backend.onrender.com/list/${id}`,
     // `http://localhost:8000/list/${id}`,
-    `https://electro-mart-backend.up.railway.app/list/${id}`,
+    // `https://electro-mart-backend.up.railway.app/list/${id}`,
   ];
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const ItemDetails = () => {
   const deleteUrls = [
     `https://electro-mart-backend.onrender.com/list/${item?.id}`,
     // `https://electro-mart-backend.up.railway.app/list/${item?.id}`,
-    `http://127.0.0.1:8000/list/${item?.id}`,
+    // `http://127.0.0.1:8000/list/${item?.id}`,
   ];
 
   const handleDelete = async () => {

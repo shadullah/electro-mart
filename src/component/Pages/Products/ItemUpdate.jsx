@@ -13,6 +13,7 @@ const ItemUpdate = () => {
   const [des, setDes] = useState("");
   const [price, setPrice] = useState("");
   const [condition, setCondition] = useState("");
+  const [category, setCat] = useState([]);
   const [url, setUrl] = useState("");
 
   useEffect(() => {
@@ -30,6 +31,7 @@ const ItemUpdate = () => {
         setDes(res.data?.description);
         setPrice(res.data?.price);
         setCondition(res.data?.condition);
+        setCondition(res.data?.category[0]);
         setUrl(res.data?.image);
       } catch (err) {
         console.log(err);
@@ -40,12 +42,27 @@ const ItemUpdate = () => {
     getItem();
   }, [id]);
 
+  useEffect(() => {
+    const categories = async () => {
+      try {
+        const res = await axios.get(
+          "https://electro-mart-backend.onrender.com/category/"
+        );
+        setCat(res.data);
+      } catch (err) {
+        toast.error(err);
+      }
+    };
+    categories();
+  }, []);
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     const title = e.target.title.value;
     const description = e.target.des.value;
     const price = e.target.price.value;
     const condition = e.target.condition.value;
+    const categorySelect = e.target.condition.value;
     const image = e.target.url.value;
 
     console.log(url, description, title);
@@ -59,6 +76,7 @@ const ItemUpdate = () => {
           price: price,
           condition: condition,
           image: image,
+          category: [categorySelect],
         },
         {
           headers: {
@@ -153,6 +171,27 @@ const ItemUpdate = () => {
                         placeholder="Write Product condition here..."
                         required
                       />
+                    </div>
+                    <div className="w-full px-3 mb-6">
+                      <select
+                        required
+                        className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
+                        name="category"
+                        id="category"
+                        value={category}
+                        onChange={(e) => setCat(e.target.value)}
+                      >
+                        <option className="text-base" value="" disabled>
+                          Set Priority here
+                        </option>
+
+                        {/* {priority.map((prio) => console.log(prio.id))} */}
+                        {category.map((cat) => (
+                          <option key={cat.id} value={cat.id}>
+                            {cat.name}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                     <div className="w-full px-3 mb-6">
                       <input

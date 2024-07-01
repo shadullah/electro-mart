@@ -53,7 +53,7 @@ const Selling = () => {
             description: des,
             price: price,
             condition: condition,
-            category: category,
+            category: [category.slug],
             image: url,
           },
           {

@@ -65,6 +65,10 @@ const ItemUpdate = () => {
     const categorySelect = e.target.category.value;
     const image = e.target.url.value;
 
+    const categoryObj = category.find(
+      (cat) => cat.id == parseInt(categorySelect)
+    );
+
     console.log(url, description, title);
 
     try {
@@ -76,7 +80,7 @@ const ItemUpdate = () => {
           price: price,
           condition: condition,
           image: image,
-          category: [categorySelect],
+          category: categoryObj.slug,
         },
         {
           headers: {

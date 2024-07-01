@@ -34,10 +34,14 @@ const Selling = () => {
     const title = e.target.title.value;
     const des = e.target.des.value;
     const price = e.target.price.value;
-    const category = e.target.category.value;
+    const categorySelect = e.target.category.value;
     const condition = e.target.condition.value;
 
-    console.log(url, price, title, des, category, condition);
+    const categoryObj = category.find(
+      (cat) => cat.id == parseInt(categorySelect)
+    );
+
+    console.log(url, price, title, des, categoryObj, condition);
 
     for (const urlLink of urls) {
       try {

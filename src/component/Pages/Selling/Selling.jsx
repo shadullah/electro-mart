@@ -34,9 +34,10 @@ const Selling = () => {
     const title = e.target.title.value;
     const des = e.target.des.value;
     const price = e.target.price.value;
+    const category = e.target.category.value;
     const condition = e.target.condition.value;
 
-    console.log(url, price, title, des, condition);
+    console.log(url, price, title, des, category, condition);
 
     for (const urlLink of urls) {
       try {
@@ -48,6 +49,7 @@ const Selling = () => {
             description: des,
             price: price,
             condition: condition,
+            category: category,
             image: url,
           },
           {
@@ -118,8 +120,8 @@ const Selling = () => {
             required
             // className="border-b-2 border-violet-500 py-2 px-3 text-gray-400 font-bold"
             className="w-1/3 outline-none border-2 border-gray-300 p-3 my-3"
-            name="priority"
-            id="priority"
+            name="category"
+            id=""
             defaultValue=""
           >
             <option className="text-base" value="" disabled>

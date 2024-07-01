@@ -2,15 +2,31 @@ import axios from "axios";
 import useUsers from "../../../Hooks/useUsers";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Selling = () => {
   const navigate = useNavigate();
   const [users] = useUsers();
+  const [category, setCat] = useState([]);
   const urls = [
     `https://electro-mart-backend.onrender.com/list/`,
     // `https://electro-mart-backend.up.railway.app/list/`,
     `http://localhost:8000/list/`,
   ];
+
+  useEffect(() => {
+    const categories = async () => {
+      try {
+        const res = await axios.get(
+          "https://electro-mart-backend.onrender.com/category/"
+        );
+        setCat(res.data);
+      } catch (err) {
+        toast.error(err);
+      }
+    };
+    categories();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -82,7 +98,7 @@ const Selling = () => {
             name="des"
             className="w-1/3 outline-none border-2 border-gray-300 p-3 my-3"
             type="text"
-            placeholder="Write requiredDescription"
+            placeholder="Write required Description"
           />
           <br />
           <label>Condition</label>
@@ -95,16 +111,30 @@ const Selling = () => {
             required
           />
           <br />
-          {/* <label>Category</label>
+          {/* <div className="w-full px-3 mb-6"> */}
+          <label>Category</label>
           <br />
-          <input
-            name="category"
-            className="w-1/3 outline-none border-2 border-gray-300 p-3 my-3"
-            type="text"
-            placeholder="category"
+          <select
             required
-          />
-          <br /> */}
+            // className="border-b-2 border-violet-500 py-2 px-3 text-gray-400 font-bold"
+            className="w-1/3 outline-none border-2 border-gray-300 p-3 my-3"
+            name="priority"
+            id="priority"
+            defaultValue=""
+          >
+            <option className="text-base" value="" disabled>
+              Set Priority here
+            </option>
+
+            {/* {priority.map((prio) => console.log(prio.id))} */}
+            {category.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
+          <br />
+          {/* </div> */}
           <label>Price</label>
           <br />
           <input

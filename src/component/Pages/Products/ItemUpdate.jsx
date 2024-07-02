@@ -33,6 +33,7 @@ const ItemUpdate = () => {
         setPrice(res.data?.price);
         setCondition(res.data?.condition);
         setSelectedCategory(res.data?.category);
+        console.log(res.data?.category);
         setUrl(res.data?.image);
       } catch (err) {
         console.log(err);

@@ -2,8 +2,9 @@ import useItems from "../../../Hooks/useItems";
 import ItemsSingle from "./ItemsSingle";
 import load from "../../../assets/loading.gif";
 
-const Products = () => {
+const Products = ({ isHome = false }) => {
   const [items, setSearch, loading] = useItems();
+  const productlist = isHome ? items.slice(0, 4) : items;
 
   return (
     <div className="max-w-[1200px] mx-auto my-12">
@@ -47,7 +48,7 @@ const Products = () => {
         </>
       ) : items?.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mx-6 md:mx-0 my-6">
-          {items.slice(0, 4).map((item) => (
+          {productlist.map((item) => (
             <ItemsSingle key={item?.id} item={item} />
           ))}
         </div>

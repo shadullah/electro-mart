@@ -10,7 +10,7 @@ const Home = () => {
       <Carousel />
       <Features />
       <GellaryList />
-      <Products />
+      <Products isHome={true} />
       <Companies />
     </div>
   );

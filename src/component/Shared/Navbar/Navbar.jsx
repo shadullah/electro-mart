@@ -9,7 +9,7 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import { GoPerson } from "react-icons/go";
 import { IoCartOutline, IoCloseCircleOutline } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 // import useUsers from "../../../Hooks/useUsers";
 import { MdLogout } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
@@ -18,8 +18,6 @@ import toast from "react-hot-toast";
 import { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
-  // const [usersSingle] = useUsers();
-  // console.log(usersSingle);
   const [toggle, setToggle] = useState(false);
   const [usertoggle, setUserToggle] = useState(false);
   // const [close, setClose] = useState(true);
@@ -69,6 +67,9 @@ const Navbar = () => {
   }, [toggle, usertoggle]);
 
   const navigate = useNavigate();
+
+  const linkClass = ({ isActive }) =>
+    isActive ? "text-orange-600 mr-3" : "hover:text-orange-600 mr-3";
 
   const handleLogout = async () => {
     for (const url of urls) {
@@ -138,23 +139,31 @@ const Navbar = () => {
               <IoCloseCircleOutline />
             </p>
             <ul className="md:flex text-start items-center font-bold md:text-[16px] p-3 md:p-0 text-2xl space-y-3 md:space-y-0 mx-auto">
-              <li className="hover:text-orange-600 mr-3">
-                <Link to="/">Home</Link>
+              <li>
+                <NavLink to="/" className={linkClass}>
+                  Home
+                </NavLink>
               </li>
               <li className="hover:text-orange-600 mr-3">
-                <Link to="/shop">Shop</Link>
+                <NavLink to="/shop" className={linkClass}>
+                  Shop
+                </NavLink>
               </li>
               {localStorage.getItem("token") ? (
                 <>
                   <li className="hover:text-orange-600 mr-3">
-                    <Link to="/sell">Sell-Item</Link>
+                    <NavLink to="/sell" className={linkClass}>
+                      Sell-Item
+                    </NavLink>
                   </li>
                 </>
               ) : (
                 <></>
               )}
               <li className="hover:text-orange-600 mr-3">
-                <Link to="/contact">Contact Us</Link>
+                <NavLink to="/contact" className={linkClass}>
+                  Contact Us
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -201,22 +210,22 @@ const Navbar = () => {
                 {localStorage.getItem("token") ? (
                   <>
                     <li className="hover:text-orange-600 mr-6">
-                      <Link to="/wishlist">
+                      <NavLink to="/wishlist" className={linkClass}>
                         <FaHeart />
-                      </Link>
+                      </NavLink>
                     </li>
                     <li className="hover:text-orange-600 mr-6 flex justify-center">
-                      <Link to="/cart">
+                      <NavLink to="/cart" className={linkClass}>
                         <IoCartOutline />
-                      </Link>
+                      </NavLink>
                     </li>
                     <li className="hover:text-orange-600 mr-6 flex justify-center items-center">
                       {/* <p className="mx-3 font-light text-gray-600">
                       {usersSingle.username},
                     </p> */}
-                      <Link to="/profile">
+                      <NavLink to="/profile" className={linkClass}>
                         <CgProfile />
-                      </Link>
+                      </NavLink>
                     </li>
                     <li className="hover:text-orange-600  flex justify-center">
                       <button onClick={handleLogout}>
@@ -227,9 +236,9 @@ const Navbar = () => {
                 ) : (
                   <>
                     <li className="hover:text-orange-600 mr-3 flex justify-center">
-                      <Link to="/login">
+                      <NavLink to="/login">
                         <GoPerson title="Login" />
-                      </Link>
+                      </NavLink>
                     </li>
                   </>
                 )}

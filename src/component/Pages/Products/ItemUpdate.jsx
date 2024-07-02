@@ -13,7 +13,8 @@ const ItemUpdate = () => {
   const [des, setDes] = useState("");
   const [price, setPrice] = useState("");
   const [condition, setCondition] = useState("");
-  const [category, setCat] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [categories, setCate] = useState([]);
   const [url, setUrl] = useState("");
 
   useEffect(() => {
@@ -22,16 +23,16 @@ const ItemUpdate = () => {
         const res = await axios.get(
           `https://electro-mart-backend.onrender.com/list/${id}/`,
           {
-            // headers: {
-            //   Authorization: `token ${localStorage.getItem("token")}`,
-            // },
+            headers: {
+              Authorization: `token ${localStorage.getItem("token")}`,
+            },
           }
         );
         setTitle(res.data?.title);
         setDes(res.data?.description);
         setPrice(res.data?.price);
         setCondition(res.data?.condition);
-        setCat(res.data?.category[0]);
+        setSelectedCategory(res.data?.category);
         setUrl(res.data?.image);
       } catch (err) {
         console.log(err);
@@ -48,7 +49,7 @@ const ItemUpdate = () => {
         const res = await axios.get(
           "https://electro-mart-backend.onrender.com/category/"
         );
-        setCat(res.data);
+        setCate(res.data);
       } catch (err) {
         toast.error(err);
       }
@@ -182,15 +183,15 @@ const ItemUpdate = () => {
                         className="appearance-none border-b-4 outline-none  border-gray-700 w-full py-2 px-3 bg-orange-300/10"
                         name="category"
                         id="category"
-                        value={category}
-                        onChange={(e) => setCat(e.target.value)}
+                        value={selectedCategory}
+                        onChange={(e) => setSelectedCategory(e.target.value)}
                       >
                         <option className="text-base" value="" disabled>
                           Set Priority here
                         </option>
 
                         {/* {priority.map((prio) => console.log(prio.id))} */}
-                        {category.map((cat) => (
+                        {categories.map((cat) => (
                           <option key={cat.id} value={cat.id}>
                             {cat.name}
                           </option>

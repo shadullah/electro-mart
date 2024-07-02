@@ -105,7 +105,7 @@ const ItemDetails = () => {
                 <p className="text-gray-600  my-3">
                   Seller: {item?.user?.username}
                 </p>
-                <h4>Category: {item?.category?.name}</h4>
+                <h4>Category: {item?.category}</h4>
                 {console.log(item?.category)}
                 <h4>
                   Condition:{" "}

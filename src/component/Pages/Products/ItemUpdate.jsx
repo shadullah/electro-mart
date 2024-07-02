@@ -31,7 +31,7 @@ const ItemUpdate = () => {
         setDes(res.data?.description);
         setPrice(res.data?.price);
         setCondition(res.data?.condition);
-        setCondition(res.data?.category[0]);
+        setCat(res.data?.category[0]);
         setUrl(res.data?.image);
       } catch (err) {
         console.log(err);
@@ -65,9 +65,9 @@ const ItemUpdate = () => {
     const categorySelect = e.target.category.value;
     const image = e.target.url.value;
 
-    const categoryObj = category.find(
-      (cat) => cat.id == parseInt(categorySelect)
-    );
+    // const categoryObj = category.find(
+    //   (cat) => cat.id == parseInt(categorySelect)
+    // );
 
     console.log(url, description, title);
 
@@ -80,7 +80,7 @@ const ItemUpdate = () => {
           price: price,
           condition: condition,
           image: image,
-          category: categoryObj.slug,
+          category: categorySelect,
         },
         {
           headers: {

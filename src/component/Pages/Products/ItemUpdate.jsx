@@ -193,7 +193,7 @@ const ItemUpdate = () => {
 
                         {/* {priority.map((prio) => console.log(prio.id))} */}
                         {categories.map((cat) => (
-                          <option key={cat.id} value={cat.name}>
+                          <option key={cat.id} value={cat.slug}>
                             {cat.name}
                           </option>
                         ))}

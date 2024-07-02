@@ -47,7 +47,7 @@ const Products = () => {
         </>
       ) : items?.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mx-6 md:mx-0 my-6">
-          {items.map((item) => (
+          {items.slice(0, 4).map((item) => (
             <ItemsSingle key={item?.id} item={item} />
           ))}
         </div>

@@ -9,6 +9,7 @@ import Products from "../component/Pages/Products/Products";
 import Profile from "../component/Pages/Profile/Profile";
 import ItemUpdate from "../component/Pages/Products/ItemUpdate";
 import PrivateRoute from "./PrivateRoute";
+import Notfound from "../component/Pages/Notfound/Notfound";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "/shop/:id/update",
         element: <ItemUpdate />,
+      },
+      {
+        path: "*",
+        element: <Notfound />,
       },
     ],
   },

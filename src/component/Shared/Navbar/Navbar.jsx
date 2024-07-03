@@ -209,7 +209,7 @@ const Navbar = () => {
               <ul className="block md:flex justify-center items-center font-bold md:text-2xl p-3 md:p-0 text-3xl space-y-3 md:space-y-0 mx-auto">
                 {localStorage.getItem("token") ? (
                   <>
-                    <li className="hover:text-orange-600 mr-6">
+                    <li className="hover:text-orange-600 mr-6 flex justify-center">
                       <NavLink to="/wishlist" className={linkClass}>
                         <FaHeart />
                       </NavLink>
